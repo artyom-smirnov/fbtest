@@ -1904,8 +1904,8 @@ class RunResults(object):
     def _quoteattr(self, attr):
         """Escape an XML attribute. Value can be unicode."""
         attr = xml_safe(attr)
-        if isinstance(attr, unicode) and not UNICODE_STRINGS:
-            attr = attr.encode(self.encoding)
+        if isinstance(attr, types.UnicodeType):
+            attr = attr.encode('utf-8')
         return saxutils.quoteattr(attr)
     def clear(self):
         """Remove all results."""
